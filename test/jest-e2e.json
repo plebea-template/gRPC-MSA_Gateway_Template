@@ -11,6 +11,6 @@
   },
   "rootDir": "..",
   "moduleNameMapper": {
-    "^src/(.*)$": "<rootDir>/$1"
+    "^src/(.*)$": "<rootDir>/src/$1"
   }
 }
