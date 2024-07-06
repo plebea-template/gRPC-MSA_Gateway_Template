@@ -1,24 +1,13 @@
 import * as cookieParser from "cookie-parser";
 
-import { INestApplication, Logger, ValidationPipe } from "@nestjs/common";
+import { Logger, ValidationPipe } from "@nestjs/common";
 import { CustomOrigin } from "@nestjs/common/interfaces/external/cors-options.interface";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
-import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 import { AppModule } from "src/modules";
 
-async function swagger(app: INestApplication) {
-  const config = new DocumentBuilder()
-    .setTitle("API Documentation")
-    .setDescription("REST API Documentation")
-    .setVersion("1.0")
-    .addBearerAuth()
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup("document", app, document);
-}
+import { swagger } from "./common/providers/swagger.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
